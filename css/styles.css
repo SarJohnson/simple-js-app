@@ -1,0 +1,17 @@
+body{
+    font-family: fantasy;
+}
+.button-class {
+    background-color: #ffff00;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 2s;
+    cursor: pointer;
+    font-family: inherit;
+}
