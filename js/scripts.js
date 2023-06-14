@@ -8,22 +8,20 @@ let pokemonRepository= (function(){
     function add(pokemon) {
         pokemonList.push(pokemon);
     }
+    function addListitem(pokemon) {
+        let pokemonList= document.querySelector('.pokemonList');
+    }
     function getAll() {
         return pokemonList;
     }
     return {
         add: add,
+        addListitem: addListitem,
         getAll: getAll
     };
 }) ();
 
-function myLoopFunction(pokemon){
-    if (pokemon.height <2 && pokemon.height >=1) {
-        document.write(pokemon.name + "Height:" + pokemon.height + "<br/>");
-    } else if (pokemon.height >=2) {
-        document.write(pokemon.name + "Height:" + pokemon.height + "That is MASSIVE!" + "<br/>");
-    } else {
-        document.write(pokemon.name + "Height:" + pokemon.height + "So small" + "<br/>");
-    }
-}
-pokemonRepository.getAll().forEach(myLoopFunction);
+
+pokemonRepository.getAll().forEach(function(pokemon){
+    pokemonRepository.addListitem(pokemon);
+})
