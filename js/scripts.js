@@ -5,12 +5,13 @@ let pokemonList= [
     {name: 'Charizard', height: 1.7, type: ['fire', 'flying']}
 ];
 
-for (let i=0; i<pokemonList.length; i++) {
-    if (pokemonList[i].height <2 && pokemonList[i].height >=1) {
-        document.write(pokemonList[i].name + "Height:" + pokemonList[i].height + "Wow that's big!" + "<br/>");
-    } else if (pokemonList[i].height >=2) {
-        document.write(pokemonList[i].name + "Height:" + pokemonList[i].height + "That is MASSIVE!" + "<br/>");
+function myLoopFunction(pokemon){
+    if (pokemon.height <2 && pokemon.height >=1) {
+        document.write(pokemon.name + "Height:" + pokemon.height + "<br/>");
+    } else if (pokemon.height >=2) {
+        document.write(pokemon.name + "Height:" + pokemon.height + "That is MASSIVE!" + "<br/>");
     } else {
-        document.write(pokemonList[i].name + "Height:" + pokemonList[i].height + "So small!" + "<br/>");
+        document.write(pokemon.name + "Height:" + pokemon.height + "So small" + "<br/>");
     }
 }
+pokemonList.forEach(myLoopFunction);
