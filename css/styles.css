@@ -1,17 +1,35 @@
+*{
+    box-sizing: border-box;
+}
 body{
     font-family: fantasy;
 }
-.button-class {
+.button-class{
     background-color: #ffff00;
     border: 2px solid #ff0000;
+    border-radius: 10px;
     color: #ff0000;
     padding: 16px 32px;
     text-align: center;
-    text-decoration: underline;
+    text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+    transition: opacity;
     transition-duration: 2s;
     cursor: pointer;
     font-family: inherit;
+    width: 20%;
+}
+button-class:hover, button-class:focus
+    .button-class:hover, .button-class:focus{
+        text-decoration: underline;
+        background-color: #ffde00;
+        transition: 1s;
+}
+.pokemon-list{
+    list-style-type: none;
+}
+h1{
+    color: #3b4cca;
 }
