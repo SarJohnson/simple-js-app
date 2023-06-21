@@ -13,7 +13,9 @@ let pokemonRepository= (function(){
         let button= document.createElement('button');
         listItem.classList.add('list-group-item');
         button.innerText= pokemon.name;
-        button.classList.add('btn');
+        button.classList.add('btn','btn-primary');
+        button.setAttribute('data-toggle', 'modal');
+        button.setAttribute('data-target', '#exampleModal');
         listItem.appendChild(button);
         pokemonListItems.appendChild(listItem);
         button.addEventListener('click', function(){showDetails(pokemon)});
@@ -54,30 +56,20 @@ let pokemonRepository= (function(){
        });
     }
 
-    function showModal(name, height, imageUrl) {
-        modalContainer.innerHTML='';
-        let modal= document.createElement('div');
-        modal.classList.add('modal');
-        let closeButtonElement= document.createElement('button');
-        closeButtonElement.classList.add('modal-close');
-        closeButtonElement.innerText= 'Close';
-        closeButtonElement.addEventListener('click', hideModal);
-        let titleElement= document.createElement('h1');
-        titleElement.innerText= name;
-        let imageContainer= document.createElement('div');
-        imageContainer.classList.add('image');
-        let imageElement= document.createElement('img');
-        imageElement.src= imageUrl;
-        let contentElement= document.createElement('p');
-        contentElement.innerText= 'Height: ';
-        contentElement.innerHTML += height;
-        modal.appendChild(closeButtonElement);
-        modal.appendChild(titleElement);
-        modal.appendChild(imageContainer);
-        imageContainer.appendChild(imageElement);
-        modal.appendChild(contentElement);
-        modalContainer.appendChild(modal);
-        modalContainer.classList.add('is-visible');
+    function showModal(pokemon) {
+        let modalBody= $(".modal-body");
+        let modalTitle= $(".modal-title");
+        modalTitle.empty();
+        modalBody.empty();
+        let titleElement= $("<h1>" + pokemon.name + "</h1>");
+        let imageElement= $('<img class="modal-img" style= width:50%>');
+        imageElement.attr("src", pokemon.imageUrl);
+        let heightElement = $("<p>" + "height : " + pokemon.height + "</p>");
+        let typesElement = $("<p>" + "types : " + pokemon.types + "</p>");
+        modalTitle.append(titleElement);
+        modalBody.append(imageElement);
+        modalBody.append(heightElement);
+        modalBody.append(typesElement);
     }
 
     document.querySelector('#show-modal').addEventListener('click', () => {
@@ -95,33 +87,8 @@ let pokemonRepository= (function(){
 
     function hideModal() {
         modalContainer.classList.remove('is-visible');
-        if (dialogPromiseReject) {
-            dialogPromiseReject();
-            dialogPromiseReject= null;
-        }
     }
 
-    function showDialog() {
-        let modal= modalContainer.querySelector('.modal');
-        let confirmButton= document.createElement('button');
-        confirmButton.classList.add('modal-confirm');
-        confirmButton.innerText= 'Confirm';
-        let cancelButton= document.createElement('button');
-        cancelButton.classList.add('modal-cancel');
-        cancelButton.innerText= 'Cancel';
-        modal.appendChild(confirmButton);
-        modal.appendChild(cancelButton);
-        confirmButton.focus();
-        return new Promise((resolve, reject) => {
-            cancelButton.addEventListener('click', hideModal);
-            confirmButton.addEventListener('click', () => {
-                dialogPromiseReject= null;
-                hideModal();
-                resolve();
-            });
-            dialogPromiseReject= reject;
-        });
-    }
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modalContainer.classList.contains(is-visible)) {
             hideModal();
@@ -147,6 +114,7 @@ let pokemonRepository= (function(){
         loadList: loadList,
         loadDetails: loadDetails,
         showDetails: showDetails,
+        showModal: showModal
     };
 }) ();
 
