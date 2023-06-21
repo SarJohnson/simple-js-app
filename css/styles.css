@@ -4,7 +4,7 @@
 body{
     font-family: fantasy;
 }
-.button-class{
+.btn{
     background-color: #ffff00;
     border: 2px solid #ff0000;
     border-radius: 10px;
@@ -21,13 +21,13 @@ body{
     font-family: inherit;
     width: 20%;
 }
-button-class:hover, button-class:focus
-    .button-class:hover, .button-class:focus{
+btn:hover, button-class:focus
+    .btn:hover, .button-class:focus{
         text-decoration: underline;
         background-color: #ffde00;
         transition: 1s;
 }
-.pokemon-list{
+.list-group{
     list-style-type: none;
 }
 h1{
