@@ -9,6 +9,7 @@ body{
     color: #3b4cca;
     text-align: center;
     background-color: #3d7dca;
+    background-image: url(https://i.gifer.com/5IPm.gif);
 }
 .btn-primary{
     background-color: #ffff00;
@@ -20,9 +21,7 @@ body{
     text-decoration: none;
     display: inline-block;
     font-size: 24px;
-    margin: 0px 0px;
-    transition: opacity;
-    transition-duration: 2s;
+    margin: auto auto;
     cursor: pointer;
     font-family: inherit;
     width: 100%;
@@ -54,8 +53,6 @@ body{
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     padding: 0;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 h1{
     color: #3b4cca;
